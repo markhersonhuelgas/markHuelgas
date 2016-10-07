@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +29,11 @@ public class Main2Activity extends AppCompatActivity {
                case MotionEvent.ACTION_DOWN:
                    initX = motionEvent.getX();
                    initY = motionEvent.getY();
-                   Toast.makeText(getApplicationContext(), ""+String.format("ACTION_DOWN>>>X:%.2f,Y:%.2f",initX, initY), Toast.LENGTH_SHORT).show();
                    return true;
               case MotionEvent.ACTION_UP:
                   finalX = motionEvent.getX();
                   finalY = motionEvent.getY();
-                  Toast.makeText(getApplicationContext(), ""+String.format("ACTION_UP>>>X:%.2f,Y:%.2f",finalX, finalY), Toast.LENGTH_SHORT).show();
+
                   displayAction(initX, finalX, initY, finalY);
                   return false;
                 }return false;
@@ -42,26 +44,23 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void displayAction(float x1, float x2, float y1, float y2){
-        String msg = "";
+        String x = "", y = "";
 
         if(x1 == x2){
-
         }else if(x1 > x2){
-            msg = String.format("Swiped right to left");
+            x = "Left";
         }else if(x1 < x2){
-            msg = String.format("Swiped left to right");
+            x = "Right";
         }
-
-        Toast.makeText(getApplicationContext(), ""+msg, Toast.LENGTH_SHORT).show();
 
         if(y1 == y2){
 
         }else if(y1 > y2){
-            msg = String.format("Swiped down to up");
+            y = "Up";
         }else if (y1 < y2){
-            msg = String.format("Swiped up to down");
+            y = "Down";
         }
 
-        Toast.makeText(getApplicationContext(), ""+msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Swipe: "+x+"-"+y+"", Toast.LENGTH_SHORT).show();
     }
 }

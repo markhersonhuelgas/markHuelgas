@@ -17,7 +17,7 @@ import android.widget.Toast;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-    Button login;
+    Button login, midterms;
     EditText email, password;
     TextView show;
     Boolean showPassword=true;
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         login=(Button)findViewById(R.id.loginButton);
+        midterms=(Button)findViewById(R.id.midtermsButton);
         email=(EditText)findViewById(R.id.emailEditText);
         password=(EditText)findViewById(R.id.passwordEditText);
         show=(TextView)findViewById(R.id.showLabel);
@@ -62,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
                     password.getText().clear();
                     email.requestFocus();
                 }
+            }
+        });
+
+        midterms.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, Midterms.class);
+                startActivity(intent);
             }
         });
 
